@@ -170,7 +170,7 @@ const mostrarCampoOpinion = () => {
     if (visitoHotel.value === 'Si') {
         mostrarOpinion.value = true;
         opinion.value = "";
-        } else {
+    } else {
         opinion.value = "Primera visita";
         mostrarOpinion.value = false;
     }
@@ -191,8 +191,14 @@ function goToMensajeFinal() {
         <div class="container">
             <form @submit.prevent="agregarNuevoReferido"
                 style="display: flex; flex-direction: column;justify-content: center;">
-                <h2 class="text-center" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-                    Formulario de datos</h2>
+                <div class="logo-container">
+                    <img src="https://hotellaunion.com.co/assets/images/hotellaUnionCuriti.webp" alt="Logo Empresa"
+                         style="max-width: 160px;" />
+                    <h2 class="text-center"
+                        style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                        Formulario de datos</h2>
+                </div>
+
 
                 <label class=" mt-4 label" for="nombre">Digite su nombre
                     <span class="text-danger">*</span></label>
@@ -271,7 +277,7 @@ function goToMensajeFinal() {
 <style scoped>
 .main {
     margin: 0;
-    height: 100%;
+    min-height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -292,6 +298,13 @@ form {
     border: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
+}
+
+.logo-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 
@@ -446,9 +459,21 @@ input[type="number"]::-webkit-outer-spin-button {
     color: red;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     form {
         width: 80%;
     }
 
-}</style>
+    .logo-container {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .logo-container img {
+        max-width: 120px;
+        max-height: 120px;
+    }
+
+}
+</style>

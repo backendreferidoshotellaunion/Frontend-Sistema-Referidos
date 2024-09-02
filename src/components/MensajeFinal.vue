@@ -11,7 +11,11 @@ function home() {
 
 <template>
     <div class="main">
-        <div class="contenedor-msg" style="width: 100%;">
+        <div class="logo-container">
+            <img src="https://hotellaunion.com.co/assets/images/hotellaUnionCuriti.webp" alt="Logo Empresa" @click="home"
+                style="max-width: 160px;" />
+        </div>
+        <div class="contenedor-msg" >
             <div class="msg">
                 <div class="alert text-center" role="alert">
                     <h4 class="alert-heading">¡Gracias por responder!</h4>
@@ -22,12 +26,13 @@ function home() {
                         para mejorar nuestros servicios.</p>
                 </div>
             </div>
+            <div class="row justify-content-center" style="width: 100%;">
+                <button class="btn btn-regresar fw-bold " @click="home()">
+                    Regresar
+                </button>
+            </div>
         </div>
-        <div class="row justify-content-center" style="width: 100%;">
-            <button class="btn btn-regresar fw-bold " @click="home()">
-                Regresar
-            </button>
-        </div>
+
     </div>
 </template>
 
@@ -46,12 +51,21 @@ function home() {
     background-attachment: fixed;
 }
 
+.logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+}
+
 .contenedor-msg {
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 100px;
 }
 
 .msg {
@@ -83,6 +97,12 @@ function home() {
         width: 100%;
         max-width: 150px;
     }
+
+    .logo-container {
+        margin-top: 40px;
+        justify-content: center;
+        align-content: center;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -93,6 +113,12 @@ function home() {
     .btn-regresar {
         width: 100%;
         max-width: 100px;
+    }
+
+    .logo-container {
+        margin-top: 40px;
+        justify-content: center;
+        align-content: center;
     }
 }
 </style>

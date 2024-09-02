@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import { useStoreReferido } from '../stores/referido.js';
 import { useStoreReferente } from '../stores/referente.js';
 import { useStoreUsuarios } from '../stores/usuario.js';
@@ -45,8 +45,9 @@ const msgAsignarButton = ref("Asignar Nivel");
 const msgNivelReferente = ref("");
 const nivelesReferente = ref([]); // Datos de niveles
 const nivelSeleccionado = ref(null); // Nivel seleccionado
-const mostrarConfirmacion = ref(false); // Nuevo estado para mostrar la confirmación}
+const mostrarConfirmacion = ref(false); // Nuevo estado para mostrar la confirmación
 const isLoading = ref(true);
+const clienteFiltrado = ref([]);
 
 
 async function getInfo() {
@@ -93,6 +94,16 @@ const filteredReferidos = computed(() => {
       referido.opinion.toLowerCase().includes(searchQuery.value.toLowerCase()));
   });
 });
+
+const filteredCount = computed(() => {
+  // Solo cuenta los referidos filtrados si searchQuery tiene un valor
+  if (searchQuery.value.trim() !== '') {
+    return filteredReferidos.value.length;
+  }
+  return 0; // Si no hay filtro, devolvemos 0
+});
+
+
 
 async function filtrarPorCedulaReferente() {
   loadIngresar.value = true;
@@ -301,7 +312,6 @@ onMounted(() => {
 });
 </script>
 
-
 <template>
   <div class="main">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -340,30 +350,26 @@ onMounted(() => {
             </li>
           </ul>
         </div>
-
       </div>
     </nav>
 
-
-
-
-
     <div class="row" style="width: 100%; height: 100%;">
-      <div class="row justify-content-end mb-4" id="contenedorTI">
-        <div class="titulo">
-          <h1 class="text-center mt-3 text-uppercase fw-bold" id="titulonc">Nuestros clientes</h1>
-        </div>
-        <input type="text" class="form-control" id="inputBusqueda" v-model="searchQuery"
-          placeholder="Buscar cualquier campo...">
-      </div>
-
-      <div v-if="isLoading" class="text-center">
-        <div class="spinner-border" role="status" id="spinner-border">
+      <div v-if="isLoading" class="text-center fw-bold" style="margin-top: 150px; color: white;">
+        <div class="spinner-border" role="status" id="spinner-border" style="color: white;">
           <span class="visually-hidden">Loading...</span>
         </div>
+        <p>Por favor espere...</p>
       </div>
 
       <div v-else class="row">
+        <div class="row justify-content-end mb-4" id="contenedorTI">
+          <div class="titulo">
+            <h1 class="text-center mt-3 text-uppercase fw-bold" id="titulonc">Nuestros clientes</h1>
+          </div>
+          <input type="text" class="form-control" id="inputBusqueda" v-model="searchQuery"
+            placeholder="Buscar cualquier campo...">
+        </div>
+
         <div class="col-md-4 px-5" v-for="(referido, index) in filteredReferidos" :key="index">
           <div class="card mb-4">
             <div class="card-body">
@@ -405,7 +411,6 @@ onMounted(() => {
           </div>
         </div>
       </div>
-
 
       <!-- Modal buscar referidos del referente/embajador-->
       <div class="modal fade" id="modalBuscarReferidos" tabindex="-1" aria-labelledby="modalBuscarReferidosLabel"
@@ -455,7 +460,6 @@ onMounted(() => {
                       </table>
                     </div>
 
-
                     <!-- Botón para asignar nivel -->
                     <div class="text-center mt-3">
                       <button value="Buscar" class="btn btn-primary fw-bold fs-5 text-uppercase"
@@ -466,9 +470,6 @@ onMounted(() => {
                         {{ msgAsignarButton }}
                       </button>
                     </div>
-
-
-
 
                     <!-- Tabla de niveles -->
                     <div v-if="mostrarNiveles" class="mt-3">
@@ -672,13 +673,17 @@ onMounted(() => {
 <style scoped>
 .main {
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
+  /* Altura mínima de la ventana completa */
+  display: flex;
+  flex-direction: column;
   background-image: url('../assets/launion3.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
 
 .navbar {
   width: 100%;
@@ -896,6 +901,10 @@ input[type="number"]::-webkit-outer-spin-button {
     flex-direction: column;
     align-items: center;
     margin-top: 15px;
+  }
+
+  .card{
+  min-width: 200px;
   }
 }
 

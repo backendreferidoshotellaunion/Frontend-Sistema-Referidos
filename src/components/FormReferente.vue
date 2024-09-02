@@ -138,11 +138,15 @@ function hideDropdown() {
     <div class="main">
         <div class="container" style="margin-top: 8%;">
             <form @submit.prevent="agregarNuevoReferente">
+                <div class="logo-container">
+                    <img src="https://hotellaunion.com.co/assets/images/hotellaUnionCuriti.webp" alt="Logo Empresa"
+                        style="max-width: 120px;" />
+                </div>
                 <p class="text-center fw-bold fs-5">Por favor seleccione la persona que le recomendó nuestro servicio</p>
                 <div class="container text-center mb-3">
                     <div class="input-group mt-4">
                         <!-- Mostrar indicador de carga mientras se obtienen los referidos -->
-                        <div v-if="loadingReferidos" class="spinner-container" >
+                        <div v-if="loadingReferidos" class="spinner-container">
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             Cargando...
                         </div>
@@ -184,7 +188,15 @@ function hideDropdown() {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}   
+}
+
+.logo-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
 
 form {
     width: 45%;
