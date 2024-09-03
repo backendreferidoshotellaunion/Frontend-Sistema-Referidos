@@ -127,18 +127,18 @@ function home() {
 }
 
 .btn {
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 16px;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #337ab7;
+  background-color: #fecd31;
   cursor: pointer;
 }
 
 .btn:hover {
-  background-color: #23527c;
+  background-color: #d5b754;
 }
 
 .btn:disabled {

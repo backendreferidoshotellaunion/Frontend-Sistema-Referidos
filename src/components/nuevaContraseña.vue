@@ -83,9 +83,9 @@ function home() {
     <section class="container" v-if="showOne">
       <form class="form" @submit.prevent="validarCampos">
         <div class="form-group">
-          <label for="password">Por favor, ingrese la nueva contraseña</label>
+          <label class="fw-bold" for="password">Por favor, ingrese la nueva contraseña</label>
           <div class="input-wrapper">
-            <input :type="tipoContrasena" id="password" class="form-control" v-model="data.password" />
+            <input :type="tipoContrasena" id="password" class="form-control" v-model="data.password" placeholder="Nueva contraseña..." />
             <i :class="iconoContrasena" @click="ocultarContrasena" class="toggle-password"></i>
           </div>
           <p class="text-danger text-center" v-if="showPasswordError">
@@ -93,9 +93,9 @@ function home() {
             carácter especial y 8 caracteres como mínimo.
           </p>
 
-          <label for="confirm-password">Confirmar Contraseña</label>
+          <label class="fw-bold" for="confirm-password">Confirmar Contraseña</label>
           <div class="input-wrapper">
-            <input :type="tipoContrasena" id="confirm-password" class="form-control" v-model="checkPassword" />
+            <input :type="tipoContrasena" id="confirm-password" class="form-control" v-model="checkPassword" placeholder="Confirmar contraseña..." />
             <i :class="iconoContrasena" @click="ocultarContrasena" class="toggle-password"></i>
           </div>
           <p class="text-danger text-center" v-if="showConfirmPasswordError">
@@ -128,6 +128,7 @@ function home() {
 
 
 <style scoped>
+
 .input-wrapper {
   position: relative;
 }
@@ -142,18 +143,18 @@ function home() {
 
 .form-control {
   width: 100%;
-  padding-right: 40px;
-  /* Espacio para el icono */
 }
 
 .container {
   max-width: 600px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 30px;
   background-color: #f5f5f5;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+
 
 .form-group {
   margin-bottom: 20px;
@@ -179,6 +180,7 @@ function home() {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  margin: 10px 0px;
 }
 
 .form-control:focus {
@@ -187,19 +189,19 @@ function home() {
 }
 
 .btn {
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 16px;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #337ab7;
+  background-color: #fecd31;
   cursor: pointer;
   width: 100%;
 }
 
 .btn:hover {
-  background-color: #23527c;
+  background-color: #d5b754;
 }
 
 .btn:disabled {

@@ -3,7 +3,6 @@ import { ref } from "vue";
 import { useStoreUsuarios } from "../stores/usuario.js";
 import VerificarCodigo from "./validarCodigo.vue";
 import { useRouter } from 'vue-router';
-import logoHere from "../assets/logo.png";
 
 const router = useRouter();
 const useUsuario = useStoreUsuarios();
@@ -74,9 +73,6 @@ function home() {
         <img src="https://hotellaunion.com.co/assets/images/hotellaUnionCuriti.webp" alt="Logo Empresa" @click="home"
           style="cursor: pointer; max-width: 160px;" />
       </div>
-      <div class="col-auto">
-        <p class="mb-0 fs-3 fw-bold text-center" style="color:white;">Complejo Turístico Hotel la Unión</p>
-      </div>
     </div>
     <section v-if="!componenteVerificar">
       <div class="card col-12 col-md-8 col-lg-6 text-center">
@@ -88,7 +84,7 @@ function home() {
               <input type="text" class="form-control" v-model="email" placeholder="Ej: correo@gmail.com" />
               <p class="text-danger text-center">{{ validacion }}</p>
             </div>
-            <button value="Ingresar" type="submit" class="btn btn-primary">
+            <button value="Ingresar" type="submit" class="btn">
               <div v-if="loadingCorreo">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
               </div>
@@ -112,8 +108,6 @@ main {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
-
 
 .card {
   margin: 20px auto;
@@ -156,18 +150,18 @@ main {
 }
 
 .btn {
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 16px;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #337ab7;
+  background-color: #fecd31;
   cursor: pointer;
 }
 
 .btn:hover {
-  background-color: #23527c;
+  background-color: #d5b754;
 }
 
 .btn:disabled {

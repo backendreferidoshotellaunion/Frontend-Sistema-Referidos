@@ -698,10 +698,12 @@ onMounted(() => {
 }
 
 #btn {
-  background-color: rgba(249, 231, 159);
-
+  background-color: #fecd31;
 }
 
+#btn:hover {
+  background-color: #d5b754;
+}
 
 
 

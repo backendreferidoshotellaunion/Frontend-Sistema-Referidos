@@ -208,4 +208,10 @@ input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+@media screen and (max-width: 450px) {
+    .login-card {
+    margin: 0px 20px;
+    }
+}
 </style>
