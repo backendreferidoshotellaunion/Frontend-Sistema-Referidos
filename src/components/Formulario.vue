@@ -277,13 +277,13 @@ function goToMensajeFinal() {
 <style scoped>
 .main {
     margin: 0;
-    min-height: 100vh;
+    min-height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: url('../assets/launion.jpg');
-    background-size: cover;
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;

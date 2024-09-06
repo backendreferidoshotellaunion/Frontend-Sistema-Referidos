@@ -480,8 +480,8 @@ onMounted(() => {
                             <tr>
                               <th>Seleccionar</th>
                               <th>Nivel</th>
-                              <th>Descripción</th>
-                              <th>Beneficios</th>
+                              <th>Requisitos</th>
+                              <th>Incentivo</th>
                             </tr>
                           </thead>
                           <tbody>

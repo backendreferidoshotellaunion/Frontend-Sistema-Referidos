@@ -8,7 +8,7 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 import 'floating-vue/dist/style.css';
 
 
-axios.defaults.baseURL = 'http://localhost:3005/api/'
+axios.defaults.baseURL = 'https://backend-sistema-referidos.onrender.com/api/'
 
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate);
