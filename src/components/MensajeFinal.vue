@@ -39,16 +39,14 @@ function home() {
 
 <style scoped>
 .main {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-image: url('../assets/launion.jpg');
     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-position: center; 
 }
 
 .logo-container {

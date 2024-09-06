@@ -180,14 +180,12 @@ function hideDropdown() {
 <style scoped>
 .main {
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     display: flex;
     background-image: url('../assets/launion.jpg');
     background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-position: center; 
 }
 
 .logo-container {

@@ -126,6 +126,7 @@ function irRecuperarContra() {
     background-image: url('../assets/launion2.jpg');
     background-size: cover;
     background-position: center;    
+
 }
 
 .login-card {

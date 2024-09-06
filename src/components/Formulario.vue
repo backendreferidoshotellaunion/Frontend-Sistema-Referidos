@@ -283,9 +283,10 @@ function goToMensajeFinal() {
     justify-content: center;
     align-items: center;
     background-image: url('../assets/launion.jpg');
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
 }
 
 form {
