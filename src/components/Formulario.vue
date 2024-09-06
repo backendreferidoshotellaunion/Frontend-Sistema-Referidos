@@ -277,16 +277,15 @@ function goToMensajeFinal() {
 <style scoped>
 .main {
     margin: 0;
-    min-height: 100%;
+    min-height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: url('../assets/launion.jpg');
-    background-size: 100%;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 form {
