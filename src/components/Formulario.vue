@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useStoreReferido } from '../stores/referido.js'
 import { useRouter } from 'vue-router';
 
@@ -30,9 +30,28 @@ const errores = ref({
 const visitoHotel = ref("");
 const mostrarOpinion = ref(false);
 const selectedMethod = ref("");
-const opciones = ref([{ nombre: "Referido" }, { nombre: "Redes sociales" }, { nombre: "Otro" }]);
+const opcionesBase = [
+    { nombre: "Referido" },
+    { nombre: "Redes sociales" },
+    { nombre: "Otro" }
+];
+const opciones = ref([]);
+const referidos = ref([]);
 
-
+async function getInfoReferidos() {
+    try {
+        const response = await useReferidos.getAll();
+        referidos.value = response;
+        // Filtrar opciones dinámicamente: si no hay referidos, eliminamos la opción "Referido"
+        if (referidos.value.length === 0) {
+            opciones.value = opcionesBase.filter(opcion => opcion.nombre !== "Referido");
+        } else {
+            opciones.value = opcionesBase;
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 const agregarNuevoReferido = async () => {
     quitarTildesDeFormulario();
@@ -184,6 +203,9 @@ function goToMensajeFinal() {
     router.push('/msg')
 }
 
+onMounted(()=>{
+    getInfoReferidos();
+})
 </script>
 
 <template>
