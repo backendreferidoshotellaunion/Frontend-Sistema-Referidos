@@ -18,6 +18,7 @@ const validacion = ref("");
 const showModal = ref(false);
 const bordeInput = ref(false);
 const loadEnviar = ref(false);
+const loadingReferidos = ref(false);
 const errores = ref({
     nombre: false,
     apellido: false,
@@ -39,6 +40,7 @@ const opciones = ref([]);
 const referidos = ref([]);
 
 async function getInfoReferidos() {
+    loadingReferidos.value = true;
     try {
         const response = await useReferidos.getAll();
         referidos.value = response;
@@ -50,6 +52,8 @@ async function getInfoReferidos() {
         }
     } catch (error) {
         console.log(error);
+    } finally{
+        loadingReferidos.value = false;
     }
 }
 
@@ -203,19 +207,23 @@ function goToMensajeFinal() {
     router.push('/msg')
 }
 
-onMounted(()=>{
+onMounted(() => {
     getInfoReferidos();
 })
 </script>
 
 <template>
     <div class="main">
-        <div class="container">
+        <div v-if="loadingReferidos" class="spinner-container">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Cargando Formulario...
+        </div>
+        <div v-else class="container">
             <form @submit.prevent="agregarNuevoReferido"
                 style="display: flex; flex-direction: column;justify-content: center;">
                 <div class="logo-container">
                     <img src="https://hotellaunion.com.co/assets/images/hotellaUnionCuriti.webp" alt="Logo Empresa"
-                         style="max-width: 160px;" />
+                        style="max-width: 160px;" />
                     <h2 class="text-center"
                         style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
                         Formulario de datos</h2>
@@ -260,8 +268,8 @@ onMounted(()=>{
                 <label class=" label" for="visitoHotel">¿Ha visitado nuestro establecimiento anteriormente? <span
                         class="text-danger">*</span></label>
                 <select v-model="visitoHotel" class="form-select mb-4 input" id="inputGroupSelect04"
-                    aria-label="Example select with button addon" :class="errores.visitoHotel ? 'input-border' : 'input'"
-                    @change="mostrarCampoOpinion">
+                    aria-label="Example select with button addon"
+                    :class="errores.visitoHotel ? 'input-border' : 'input'" @change="mostrarCampoOpinion">
                     <option value="" disabled selected>Escoge una opción...</option>
                     <option value="Si">Sí</option>
                     <option value="No">No</option>
@@ -309,6 +317,22 @@ onMounted(()=>{
     background-position: center;
     background-repeat: no-repeat;
 
+}
+
+.spinner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: white;
+    background-color: black;
+    width: 200px;
+    height: 60px;
+}
+
+.spinner-container .spinner-border {
+    margin-right: 10px;
 }
 
 form {
