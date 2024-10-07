@@ -160,11 +160,6 @@ async function filtrarPorCedulaReferido() {
       msgButton.value = "Buscar";
     } else {
       validacion.value = "La cédula digitada no tiene embajador";
-      nombreReferente.value = "";
-      apellidoReferente.value = "";
-      cedulaReferente.value = "";
-      correoReferente.value = "";
-      telefonoReferente.value = "";
       mostrar.value = false;
       mostrarReferentes.value = false;
       loadIngresar.value = false;
