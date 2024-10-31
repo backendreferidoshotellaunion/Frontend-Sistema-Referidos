@@ -75,7 +75,7 @@ async function getInfoNivelReferente() {
   msgAsignarButton.value = "";
   try {
     const response = await useNivelReferente.getAll();
-    nivelesReferente.value = response; // Guarda los niveles obtenidos
+    nivelesReferente.value = response.reverse(); // Guarda los niveles obtenidos
     loadNivel.value = false;
     msgAsignarButton.value = "Asignar Nivel";
   } catch (error) {
